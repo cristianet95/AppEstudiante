@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="DNI"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView31"
+            android:layout_weight="1"
+            android:background="@color/colorSecundarioEdit"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlanco"
+            android:padding="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtDniListaAl"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrincipalEdit"
+            android:gravity="center" />
+
+        <TextView
+            android:text="Nombre:"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView21"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtNombreListaAl"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrincipalEdit"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:text="1º Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView27"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt1ApellidoListaAl"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrincipalEdit" />
+
+        <TextView
+            android:text="2º Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView29"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt2ApellidoListaAl"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrincipalEdit" />
+    </LinearLayout>
+
+</LinearLayout>

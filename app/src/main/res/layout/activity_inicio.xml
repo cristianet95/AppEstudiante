@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_inicio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cristian.appestudiante.vista.InicioAdministrativo"
+    android:orientation="vertical">
+
+    <include android:id="@+id/apptoolbar" layout="@layout/tool_bar"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaExpandible"
+        android:groupIndicator="@null"
+        android:divider="@color/colorSecundarioEdit"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>

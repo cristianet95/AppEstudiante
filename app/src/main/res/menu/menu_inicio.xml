@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/itemCentro"
+        android:orderInCategory="100"
+        android:title="Centro">
+        <menu>
+            <group android:id="@+id/grupoCentro">
+                <item
+                    android:id="@+id/opcionDatosCentro"
+                    android:orderInCategory="100"
+                    android:title="Datos centro"
+                    android:icon="@drawable/information"/>
+
+                <item android:id="@+id/opcionLocalizacion"
+                    android:orderInCategory="100"
+                    android:title="Localizacion"
+                    android:icon="@drawable/location"/>
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/itemAlumno"
+        android:orderInCategory="100"
+        android:title="Alumno">
+        <menu>
+            <group android:id="@+id/grupoAlumno">
+                <item
+                    android:id="@+id/opcionAnadirAlumno"
+                    android:orderInCategory="100"
+                    android:title="Añadir Alumno"
+                    android:icon="@drawable/add_button"/>
+
+                <item android:id="@+id/opcionListarAlumnos"
+                    android:orderInCategory="100"
+                    android:title="Listar Alumnos"
+                    android:icon="@drawable/lista"/>
+
+                <item android:id="@+id/opcionMatricularAlumnos"
+                    android:orderInCategory="100"
+                    android:title="Matricular Alumno"
+                    android:icon="@drawable/matricula"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/itemProfesor"
+        android:orderInCategory="100"
+        android:title="Profesor">
+        <menu>
+            <group android:id="@+id/grupoProfesor">
+                <item android:id="@+id/opcionAnadirProfesor"
+                    android:orderInCategory="100"
+                    android:icon="@drawable/add_button"
+                    android:title="Añadir Profesor" />
+
+                <item android:id="@+id/opcionEliminarProfesor"
+                    android:orderInCategory="100"
+                    android:title="Eliminar Profesor"
+                    android:icon="@drawable/delete_imagen"/>
+            </group>
+        </menu>
+    </item>
+</menu>

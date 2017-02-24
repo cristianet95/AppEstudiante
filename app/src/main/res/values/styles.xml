@@ -1,0 +1,82 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorGris</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Estilo Login -->
+    <style name="ThemeOverlayActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/colorBlanco</item>
+        <item name="colorPrimary">@color/colorGris</item>
+    </style>
+    
+    <style name="estiloEditTextLogin">
+        <item name="android:background">@drawable/estilo_edit_login</item>
+        <item name="android:inset" tools:targetApi="lollipop">2dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+    </style>
+
+    <style name="estiloBotonLogin">
+        <item name="android:background">@drawable/estilo_boton</item>
+        <item name="android:textColor">@color/colorBlanco</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <!-- Estilo Administrativo -->
+    <style name="imageButtonAdmin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="textViewMenu">
+        <item name="android:textColor">@color/colorPrincipalEdit</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    
+    <style name="tituloInicios">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/colorGris</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="estiloImagenButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="estiloEditFormulario">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/estilo_edit_text</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="estiloEditModificar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/colorGris</item>
+        <item name="android:background">@drawable/estilo_edit_modificar</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:enabled">false</item>
+    </style>
+</resources>

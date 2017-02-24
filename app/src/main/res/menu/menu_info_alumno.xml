@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opcionModificarAlumno"
+        android:orderInCategory="100"
+        android:title="Modificar Alumno" />
+
+    <item
+        android:id="@+id/opcionEliminarInfoAlumno"
+        android:orderInCategory="100"
+        android:title="Eliminar Alumno" />
+
+    <item
+        android:id="@+id/opcionAceptarModificarAlumno"
+        android:orderInCategory="100"
+        android:title="Aceptar" />
+
+    <item
+        android:id="@+id/opcionCancelarModificarAlumno"
+        android:orderInCategory="100"
+        android:title="Cancelar" />
+</menu>
