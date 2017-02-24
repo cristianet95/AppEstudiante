@@ -34,7 +34,7 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
 
     private Toolbar toolbar;
     private Administrativo ad;
-    private ExpandableListView lista;
+    private ExpandableListView listas;
     private ArrayList<ListaObjetos> titulos;
     private HashMap<String, List<ListaObjetos>> items;
     private String ip = "http://appestudiante.esy.es/modelo/getCentroById.php?idCentro=";
@@ -50,10 +50,10 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
         setSupportActionBar(toolbar);
 
         //Inicializando componentes
-        lista = (ExpandableListView) findViewById(R.id.listaExpandible);
+        listas = (ExpandableListView) findViewById(R.id.listaExpandible);
         cargarDatos();
-        lista.setAdapter(new ExpandableListAdapter(this, titulos, items));
-        lista.setOnChildClickListener(this);
+        listas.setAdapter(new ExpandableListAdapter(this, titulos, items));
+        listas.setOnChildClickListener(this);
 
         //Recogiendo valores del Administrador
         if (savedInstanceState == null) {
