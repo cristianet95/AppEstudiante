@@ -1,5 +1,6 @@
 package com.example.cristian.appestudiante.fragment;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,9 +15,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.cristian.appestudiante.R;
+import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Profesor;
+import com.example.cristian.appestudiante.vista.DetallesAlumno;
+import com.example.cristian.appestudiante.vista.DetallesProfesor;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Cristian on 25/02/2017.
@@ -60,6 +73,52 @@ public class FragmentDetallesProfesor extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
     }
 
+    public void modificarProfesor() {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("dni", editDni.getText().toString());
+            jsonObject.put("dniActual", profesor.getDni());
+            jsonObject.put("nombre", editNombre.getText().toString());
+            jsonObject.put("ape1", editApe1.getText().toString());
+            jsonObject.put("ape2", editApe2.getText().toString());
+            jsonObject.put("email", editEmail.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_actualizarProfesor, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if(response.getString("state").equals("1")){
+                        Toast.makeText(getContext(), "El alumno se ha modificado", Toast.LENGTH_SHORT ).show();
+                        profesor.setDni(editDni.getText().toString());
+                        profesor.setNombre(editNombre.getText().toString());
+                        profesor.setApe1(editApe1.getText().toString());
+                        profesor.setApe2(editApe2.getText().toString());
+                        profesor.setEmail(editEmail.getText().toString());
+                        ((DetallesProfesor)getActivity()).setResult(Activity.RESULT_OK);
+                        cargarDatosProfesor(profesor);
+                        cargarVista(2);
+                    }else{
+                        Toast.makeText(getContext(), "Error al modificar el alumno", Toast.LENGTH_SHORT ).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT ).show();
+                    }
+                });
+
+        AppEstudianteSingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         this.menu = menu;
@@ -95,7 +154,7 @@ public class FragmentDetallesProfesor extends Fragment {
                 dialog.create().show();
                 return true;
             case R.id.opcionAceptarModificarUsuario:
-                //modificarAlumno();
+                modificarProfesor();
                 return true;
             case R.id.opcionCancelarModificarUsuario:
                 cargarVista(2);

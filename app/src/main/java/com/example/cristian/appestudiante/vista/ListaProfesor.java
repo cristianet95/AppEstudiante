@@ -1,5 +1,6 @@
 package com.example.cristian.appestudiante.vista;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -53,7 +54,18 @@ public class ListaProfesor extends AppCompatActivity implements ProfesorListener
             Bundle bundle = new Bundle();
             bundle.putSerializable("profesor", profesor);
             intent.putExtras(bundle);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                AsyncProfesores asyncProfesores = new AsyncProfesores();
+                asyncProfesores.execute(DireccionesWeb.URL_obtenerProfesores);
+            }
         }
     }
 

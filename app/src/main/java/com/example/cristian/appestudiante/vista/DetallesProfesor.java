@@ -1,5 +1,6 @@
 package com.example.cristian.appestudiante.vista;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -21,6 +22,14 @@ public class DetallesProfesor extends AppCompatActivity {
 
         if(profesor != null){
             frgDetallesProfesor.cargarDatosProfesor(profesor);
+        }
+    }
+
+    public void setResult(Boolean result){
+        if(result){
+            setResult(Activity.RESULT_OK);
+        }else{
+            setResult(Activity.RESULT_CANCELED);
         }
     }
 }
