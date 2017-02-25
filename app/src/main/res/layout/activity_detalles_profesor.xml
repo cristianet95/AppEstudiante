@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_detalles_profesor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cristian.appestudiante.vista.DetallesProfesor"
+    android:orientation="vertical">
+
+    <include android:id="@+id/toolbarinfoprofesor" layout="@layout/tool_bar"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/info"
+            android:id="@+id/imageView7"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:text="Datos Personales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView20"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            android:textSize="20sp"
+            android:padding="10dp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="DNI"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/colorPrincipalEdit"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/editDniInfoProfesor"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            style="@style/estiloEditModificar"
+            android:hint="Introduce dni"
+            android:maxLength="9"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/colorPrincipalEdit"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/editNombreInfoProfesor"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            style="@style/estiloEditModificar"
+            android:hint="Introduce nombre" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="1º Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/colorPrincipalEdit"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/editApe1InfoProfesor"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            style="@style/estiloEditModificar"
+            android:hint="Introduce 1º apellido" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="2º Apellido"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView4"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/colorPrincipalEdit"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/editApe2InfoProfesor"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            style="@style/estiloEditModificar"
+            android:hint="Introduce 2º apellido" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/contacto"
+            android:id="@+id/imageView9"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:text="Contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView23"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            android:textSize="20sp"
+            android:padding="10dp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="E-mail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView16"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/colorPrincipalEdit"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:inputType="textPersonName"
+            android:id="@+id/editEmailInfoProfesor"
+            android:layout_weight="1"
+            android:textColor="@color/colorGris"
+            style="@style/estiloEditModificar"
+            android:hint="Introduce e-mail" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrincipalEdit" />
+</LinearLayout>

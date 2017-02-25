@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/opcionModificarAlumno"
+        android:id="@+id/opcionModificarUsuario"
         android:orderInCategory="100"
-        android:title="Modificar Alumno" />
+        android:title="Modificar" />
 
     <item
-        android:id="@+id/opcionEliminarInfoAlumno"
+        android:id="@+id/opcionEliminarInfoUsuario"
         android:orderInCategory="100"
-        android:title="Eliminar Alumno" />
+        android:title="Eliminar" />
 
     <item
-        android:id="@+id/opcionAceptarModificarAlumno"
+        android:id="@+id/opcionAceptarModificarUsuario"
         android:orderInCategory="100"
         android:title="Aceptar" />
 
     <item
-        android:id="@+id/opcionCancelarModificarAlumno"
+        android:id="@+id/opcionCancelarModificarUsuario"
         android:orderInCategory="100"
         android:title="Cancelar" />
 </menu>

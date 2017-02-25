@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.dialog.DialogListaAlumnos;
 import com.example.cristian.appestudiante.dialog.DialogListaCursos;
 import com.example.cristian.appestudiante.fragment.AlumnoListener;
@@ -57,9 +58,6 @@ public class MatricularAlumno extends AppCompatActivity implements View.OnClickL
     private Alumno alumno;
     private Curso curso;
 
-    private String ipAlumnos = "http://appestudiante.esy.es/modelo/obtenerAlumnos.php";
-    private String ipCursos = "http://appestudiante.esy.es/modelo/getCursosDisponibles.php?idCentro=";
-    private String ipMatricula = "http://appestudiante.esy.es/modelo/matricularAlumno.php";
     private String idCentro;
 
     @Override
@@ -128,7 +126,7 @@ public class MatricularAlumno extends AppCompatActivity implements View.OnClickL
                 e.printStackTrace();
             }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ipMatricula, jsonObject, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_matricularAlumno, jsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
@@ -158,11 +156,11 @@ public class MatricularAlumno extends AppCompatActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.btnElegirAlumno:
                 AsyncAlumnos async = new AsyncAlumnos(this);
-                async.execute(ipAlumnos);
+                async.execute(DireccionesWeb.URL_obtenerAlumnos);
                 break;
             case R.id.btnElegirCurso:
                 AsyncCursos asyncCursos = new AsyncCursos(this);
-                asyncCursos.execute(ipCursos+idCentro);
+                asyncCursos.execute(DireccionesWeb.URL_obtenerCursos+idCentro);
                 break;
             case R.id.btnMatricularse:
                 matricularAlumno();

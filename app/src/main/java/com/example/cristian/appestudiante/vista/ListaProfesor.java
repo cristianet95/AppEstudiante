@@ -1,13 +1,14 @@
 package com.example.cristian.appestudiante.vista;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.cristian.appestudiante.R;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.fragment.FragmentListaProfesor;
 import com.example.cristian.appestudiante.fragment.ProfesorListener;
-import com.example.cristian.appestudiante.modelo.Alumno;
 import com.example.cristian.appestudiante.modelo.Profesor;
 
 import org.json.JSONArray;
@@ -22,14 +23,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ListaProfesor extends AppCompatActivity implements ProfesorListener {
 
     private FragmentListaProfesor frgListaProfesor;
-    private String ipProfesores = "http://appestudiante.esy.es/modelo/obtenerProfesores.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +37,24 @@ public class ListaProfesor extends AppCompatActivity implements ProfesorListener
         frgListaProfesor = (FragmentListaProfesor) getSupportFragmentManager().findFragmentById(R.id.frgListaProfesores);
 
         AsyncProfesores asyncProfesores = new AsyncProfesores();
-        asyncProfesores.execute(ipProfesores);
+        asyncProfesores.execute(DireccionesWeb.URL_obtenerProfesores);
 
         frgListaProfesor.setListener(this);
     }
 
     @Override
     public void onProfesorListener(Profesor profesor) {
+            boolean existeFragment = (getSupportFragmentManager().findFragmentById(R.id.frgDetalleProfesor)) != null;
 
+        if(existeFragment){
+
+        }else{
+            Intent intent = new Intent(ListaProfesor.this, DetallesProfesor.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("profesor", profesor);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     class AsyncProfesores extends AsyncTask<String, Void, ArrayList<Profesor>> {
@@ -91,6 +99,7 @@ public class ListaProfesor extends AppCompatActivity implements ProfesorListener
                         profesor.setNombre(profesoresJSON.getJSONObject(i).getString("nombre"));
                         profesor.setApe1(profesoresJSON.getJSONObject(i).getString("ape1"));
                         profesor.setApe2(profesoresJSON.getJSONObject(i).getString("ape2"));
+                        profesor.setEmail(profesoresJSON.getJSONObject(i).getString("email"));
 
                         listaProfesores.add(profesor);
                     }

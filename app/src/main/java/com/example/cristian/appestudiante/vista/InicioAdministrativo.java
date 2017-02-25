@@ -19,6 +19,7 @@ import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.adapter.ExpandableListAdapter;
 import com.example.cristian.appestudiante.adapter.ListaObjetos;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Administrativo;
 
 import org.json.JSONException;
@@ -37,7 +38,6 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
     private ExpandableListView lista;
     private ArrayList<ListaObjetos> titulos;
     private HashMap<String, List<ListaObjetos>> items;
-    private String ip = "http://appestudiante.esy.es/modelo/getCentroById.php?idCentro=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,7 +180,7 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
     }
 
     public void executeActivityMaps() {
-        StringRequest jor = new StringRequest(Request.Method.GET, ip+ad.getIdCentro(), new Response.Listener<String>() {
+        StringRequest jor = new StringRequest(Request.Method.GET, DireccionesWeb.URL_ObtenerCentro+ad.getIdCentro(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

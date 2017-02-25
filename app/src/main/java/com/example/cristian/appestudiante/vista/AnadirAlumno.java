@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.dialog.DatePickerFragment;
 
 import org.json.JSONException;
@@ -52,8 +53,6 @@ public class AnadirAlumno extends AppCompatActivity {
     private ImageButton dialogDatePicker;
     private Button btnInsertarAlumno;
 
-    String ip = "http://appestudiante.esy.es/modelo/anadirAlumno.php";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +73,6 @@ public class AnadirAlumno extends AppCompatActivity {
         editMovil = (EditText) findViewById(R.id.editMovil);
         editEmail = (EditText) findViewById(R.id.editEmail);
         editEdad = (EditText) findViewById(R.id.editEdad);
-
 
         textFechaNac = (TextView) findViewById(R.id.textFechaNac);
 
@@ -110,7 +108,7 @@ public class AnadirAlumno extends AppCompatActivity {
 
         System.out.println(jsonObject.getString("fecha"));
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ip, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_anadirAlumno, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

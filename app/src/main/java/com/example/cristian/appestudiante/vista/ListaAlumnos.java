@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.example.cristian.appestudiante.R;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.fragment.AlumnoListener;
 import com.example.cristian.appestudiante.fragment.FragmentListaAlumno;
 import com.example.cristian.appestudiante.modelo.Alumno;
@@ -35,7 +34,6 @@ import java.util.ArrayList;
 
 public class ListaAlumnos extends AppCompatActivity implements AlumnoListener {
 
-    private String ip = "http://appestudiante.esy.es/modelo/obtenerAlumnos.php";
     private FragmentListaAlumno frgListaAlumno;
     static final int ALUMNO_SELECCIONADO = 1;
 
@@ -47,7 +45,7 @@ public class ListaAlumnos extends AppCompatActivity implements AlumnoListener {
         frgListaAlumno = (FragmentListaAlumno) getSupportFragmentManager().findFragmentById(R.id.frgListaAlumnos);
 
         AsyncAlumnos asyncAlumnos = new AsyncAlumnos();
-        asyncAlumnos.execute(ip);
+        asyncAlumnos.execute(DireccionesWeb.URL_obtenerAlumnos);
 
         frgListaAlumno.setListener(this);
     }
@@ -74,7 +72,7 @@ public class ListaAlumnos extends AppCompatActivity implements AlumnoListener {
         if(requestCode == 1){
             if(resultCode == Activity.RESULT_OK){
                 AsyncAlumnos asyncAlumnos = new AsyncAlumnos();
-                asyncAlumnos.execute(ip);
+                asyncAlumnos.execute(DireccionesWeb.URL_obtenerAlumnos);
             }
         }
     }

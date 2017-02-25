@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.dialog.DialogExisteUsuario;
 import com.example.cristian.appestudiante.modelo.Administrativo;
 
@@ -52,8 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         radioProfesor = (RadioButton) findViewById(R.id.radioProfesor);
         radioAdministrativo = (RadioButton) findViewById(R.id.radioAdministrativo);
 
-
-        ip = "http://appestudiante.esy.es/modelo/loginAlumno.php";
+        ip = DireccionesWeb.URL_LoginAlumno;
 
         btnLogearse.setOnClickListener(this);
     }
@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.radioAlumno:
                 if(checked){
-                    ip = "http://appestudiante.esy.es/modelo/loginAlumno.php";
+                    ip = DireccionesWeb.URL_LoginAlumno;
                 }
                 break;
             case R.id.radioProfesor:
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.radioAdministrativo:
                 if(checked){
-                    ip = "http://appestudiante.esy.es/modelo/loginAdministrativo.php";
+                    ip = DireccionesWeb.URL_LoginAdministrativo;
                 }
                 break;
         }

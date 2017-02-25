@@ -2,7 +2,6 @@ package com.example.cristian.appestudiante.fragment;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,9 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Alumno;
 import com.example.cristian.appestudiante.vista.DetallesAlumno;
-import com.example.cristian.appestudiante.vista.ListaAlumnos;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,8 +50,6 @@ public class FragmentDetallesAlumno extends Fragment {
 
     private Toolbar toolbar;
     private Menu menu;
-    private String ip = "http://appestudiante.esy.es/modelo/actualizarAlumno.php";
-    private String ipDelete = "http://appestudiante.esy.es/modelo/eliminarAlumno.php";
 
     private Alumno alumno;
 
@@ -108,7 +105,7 @@ public class FragmentDetallesAlumno extends Fragment {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ip, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_actualizarAlumno, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -155,7 +152,7 @@ public class FragmentDetallesAlumno extends Fragment {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ipDelete, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_eliminarAlumno, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -184,20 +181,20 @@ public class FragmentDetallesAlumno extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         this.menu = menu;
-        inflater.inflate(R.menu.menu_info_alumno, menu);
+        inflater.inflate(R.menu.menu_info_usuario, menu);
 
-        menu.findItem(R.id.opcionAceptarModificarAlumno).setVisible(false);
-        menu.findItem(R.id.opcionCancelarModificarAlumno).setVisible(false);
+        menu.findItem(R.id.opcionAceptarModificarUsuario).setVisible(false);
+        menu.findItem(R.id.opcionCancelarModificarUsuario).setVisible(false);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.opcionModificarAlumno:
+            case R.id.opcionModificarUsuario:
                 cargarVista(1);
                 return true;
-            case R.id.opcionEliminarInfoAlumno:
+            case R.id.opcionEliminarInfoUsuario:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setTitle("¿Estas seguro de eliminar al alumno?");
                 dialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -215,10 +212,10 @@ public class FragmentDetallesAlumno extends Fragment {
                 });
                 dialog.create().show();
                 return true;
-            case R.id.opcionAceptarModificarAlumno:
+            case R.id.opcionAceptarModificarUsuario:
                 modificarAlumno();
                 return true;
-            case R.id.opcionCancelarModificarAlumno:
+            case R.id.opcionCancelarModificarUsuario:
                 cargarVista(2);
                 return true;
             default:
@@ -242,16 +239,16 @@ public class FragmentDetallesAlumno extends Fragment {
             editMovil.setEnabled(true);
             editEmail.setEnabled(true);
 
-            item = menu.findItem(R.id.opcionModificarAlumno);
+            item = menu.findItem(R.id.opcionModificarUsuario);
             item.setVisible(false);
 
-            item = menu.findItem(R.id.opcionEliminarInfoAlumno);
+            item = menu.findItem(R.id.opcionEliminarInfoUsuario);
             item.setVisible(false);
 
-            item = menu.findItem(R.id.opcionAceptarModificarAlumno);
+            item = menu.findItem(R.id.opcionAceptarModificarUsuario);
             item.setVisible(true);
 
-            item = menu.findItem(R.id.opcionCancelarModificarAlumno);
+            item = menu.findItem(R.id.opcionCancelarModificarUsuario);
             item.setVisible(true);
         }else if(opcion == 2){
             editDni.setEnabled(false);
@@ -266,16 +263,16 @@ public class FragmentDetallesAlumno extends Fragment {
             editMovil.setEnabled(false);
             editEmail.setEnabled(false);
 
-            item = menu.findItem(R.id.opcionModificarAlumno);
+            item = menu.findItem(R.id.opcionModificarUsuario);
             item.setVisible(true);
 
-            item = menu.findItem(R.id.opcionEliminarInfoAlumno);
+            item = menu.findItem(R.id.opcionEliminarInfoUsuario);
             item.setVisible(true);
 
-            item = menu.findItem(R.id.opcionAceptarModificarAlumno);
+            item = menu.findItem(R.id.opcionAceptarModificarUsuario);
             item.setVisible(false);
 
-            item = menu.findItem(R.id.opcionCancelarModificarAlumno);
+            item = menu.findItem(R.id.opcionCancelarModificarUsuario);
             item.setVisible(false);
 
             cargarDatosAlumno(alumno);

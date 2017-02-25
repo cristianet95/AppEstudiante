@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
+import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +28,6 @@ public class AnadirProfesor extends AppCompatActivity  {
     private EditText editApe1;
     private EditText editApe2;
     private EditText editEmail;
-    private String ip = "http://appestudiante.esy.es/modelo/anadirProfesor.php";
     private String idCentro;
 
     @Override
@@ -62,7 +62,7 @@ public class AnadirProfesor extends AppCompatActivity  {
         jsonObject.put("password", generarPassword());
         jsonObject.put("idCentro", idCentro);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ip, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_anadirProfesor, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
