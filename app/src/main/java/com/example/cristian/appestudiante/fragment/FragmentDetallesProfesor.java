@@ -92,7 +92,7 @@ public class FragmentDetallesProfesor extends Fragment {
             public void onResponse(JSONObject response) {
                 try {
                     if(response.getString("state").equals("1")){
-                        Toast.makeText(getContext(), "El alumno se ha modificado", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(getContext(), "El Profesor se ha modificado", Toast.LENGTH_SHORT ).show();
                         profesor.setDni(editDni.getText().toString());
                         profesor.setNombre(editNombre.getText().toString());
                         profesor.setApe1(editApe1.getText().toString());
@@ -102,7 +102,42 @@ public class FragmentDetallesProfesor extends Fragment {
                         cargarDatosProfesor(profesor);
                         cargarVista(2);
                     }else{
-                        Toast.makeText(getContext(), "Error al modificar el alumno", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(getContext(), "Error al modificar el profesor", Toast.LENGTH_SHORT ).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT ).show();
+                    }
+                });
+
+        AppEstudianteSingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void eliminarProfesor(){
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("dni", editDni.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, DireccionesWeb.URL_eliminarProfesor, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if(response.getString("state").equals("1")){
+                        Toast.makeText(getContext(), "El profesor se ha eliminado", Toast.LENGTH_SHORT ).show();
+                        ((DetallesProfesor)getActivity()).setResult(Activity.RESULT_OK);
+                        getActivity().finish();
+                    }else{
+                        Toast.makeText(getContext(), "Error al eliminar el profesor", Toast.LENGTH_SHORT ).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -141,7 +176,7 @@ public class FragmentDetallesProfesor extends Fragment {
                 dialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //eliminarAlumno();
+                        eliminarProfesor();
                         dialogInterface.dismiss();
                     }
                 });

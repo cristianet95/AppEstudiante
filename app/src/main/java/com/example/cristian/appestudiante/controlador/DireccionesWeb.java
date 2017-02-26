@@ -25,4 +25,5 @@ public class DireccionesWeb {
     public static final String URL_anadirProfesor = "http://appestudiante.esy.es/modelo/anadirProfesor.php";
     public static final String URL_obtenerProfesores = "http://appestudiante.esy.es/modelo/obtenerProfesores.php";
     public static final String URL_actualizarProfesor = "http://appestudiante.esy.es/modelo/actualizarProfesor.php";
+    public static final String URL_eliminarProfesor = "http://appestudiante.esy.es/modelo/eliminarProfesor.php";
 }

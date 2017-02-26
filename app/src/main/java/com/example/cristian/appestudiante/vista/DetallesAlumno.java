@@ -25,12 +25,4 @@ public class DetallesAlumno extends AppCompatActivity {
             frgDt.cargarDatosAlumno(alumno);
         }
     }
-
-    public void setResult(Boolean result){
-        if(result){
-            setResult(Activity.RESULT_OK);
-        }else{
-            setResult(Activity.RESULT_CANCELED);
-        }
-    }
 }
