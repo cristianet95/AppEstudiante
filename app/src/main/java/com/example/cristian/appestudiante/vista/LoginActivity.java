@@ -90,7 +90,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         dniUser = editDni.getText().toString().trim();
         passwordUser = editPasswd.getText().toString().trim();
         JSONObject jsonObject = new JSONObject();
-        String ip = this.ip;
 
         try {
             jsonObject.put("dni", dniUser);
