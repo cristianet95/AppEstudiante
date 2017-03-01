@@ -87,13 +87,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void login(){
-        dniUser = editDni.getText().toString().trim();
-        passwordUser = editPasswd.getText().toString().trim();
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject.put("dni", dniUser);
-            jsonObject.put("password", passwordUser);
+            jsonObject.put("dni", editDni.getText());
+            jsonObject.put("password", editPasswd.getText());
         } catch (JSONException e) {
             e.printStackTrace();
         }
