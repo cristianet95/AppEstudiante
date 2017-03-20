@@ -132,7 +132,9 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
                 intent.putExtra("idCentro", ad.getIdCentro());
                 startActivity(intent);
                 return true;
-            case R.id.opcionEliminarProfesor:
+            case R.id.opcionListarProfesor:
+                intent = new Intent(InicioAdministrativo.this, ListaProfesor.class);
+                startActivity(intent);
                 return true;
             default:
                 return true;
@@ -175,7 +177,6 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
                 return true;
             }
         }
-
         return true;
     }
 

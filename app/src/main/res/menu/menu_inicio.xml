@@ -52,10 +52,10 @@
                     android:icon="@drawable/add_button"
                     android:title="Añadir Profesor" />
 
-                <item android:id="@+id/opcionEliminarProfesor"
+                <item android:id="@+id/opcionListarProfesor"
                     android:orderInCategory="100"
-                    android:title="Eliminar Profesor"
-                    android:icon="@drawable/delete_imagen"/>
+                    android:title="Listar Profesores"
+                    android:icon="@drawable/lista"/>
             </group>
         </menu>
     </item>
