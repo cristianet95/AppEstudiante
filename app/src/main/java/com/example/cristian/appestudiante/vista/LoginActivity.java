@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,8 +32,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editDni;
     private EditText editPasswd;
     private Button btnLogearse;
-    private String dniUser;
-    private String passwordUser;
     private RadioGroup radioButton;
     private RadioButton radioAlumno;
     private RadioButton radioProfesor;
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     }else if(response.getString("state").equals("2")){
                         Administrativo administrativo = new Administrativo();
-                        administrativo.setDni(dniUser);
+                        administrativo.setDni(response.getJSONObject("administrativo").getString("dni"));
                         administrativo.setApe1(response.getJSONObject("administrativo").getString("ape1"));
                         administrativo.setApe2(response.getJSONObject("administrativo").getString("ape2"));
                         administrativo.setIdCentro(response.getJSONObject("administrativo").getString("idCentro"));
@@ -125,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
 
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(5000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         AppEstudianteSingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 

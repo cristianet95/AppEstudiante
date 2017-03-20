@@ -21,10 +21,10 @@ import java.util.List;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private ArrayList<ListaObjetos> titulos;
-    private HashMap<String, List<ListaObjetos>> items;
+    private ArrayList<ListaItems> titulos;
+    private HashMap<String, List<ListaItems>> items;
 
-    public ExpandableListAdapter(Context context, ArrayList<ListaObjetos> titulos, HashMap<String, List<ListaObjetos>> items) {
+    public ExpandableListAdapter(Context context, ArrayList<ListaItems> titulos, HashMap<String, List<ListaItems>> items) {
         this.context = context;
         this.titulos = titulos;
         this.items = items;
@@ -67,7 +67,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View view, ViewGroup parent) {
-        ListaObjetos t = (ListaObjetos) getGroup(groupPosition);
+        ListaItems t = (ListaItems) getGroup(groupPosition);
 
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -84,7 +84,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View view, ViewGroup parent) {
-        ListaObjetos t = (ListaObjetos) getChild(groupPosition, childPosition);
+        ListaItems t = (ListaItems) getChild(groupPosition, childPosition);
 
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

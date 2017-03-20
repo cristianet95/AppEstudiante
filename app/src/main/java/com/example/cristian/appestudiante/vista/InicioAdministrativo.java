@@ -17,7 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.adapter.ExpandableListAdapter;
-import com.example.cristian.appestudiante.adapter.ListaObjetos;
+import com.example.cristian.appestudiante.adapter.ListaItems;
 import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
 import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Administrativo;
@@ -36,8 +36,8 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
     private Toolbar toolbar;
     private Administrativo ad;
     private ExpandableListView lista;
-    private ArrayList<ListaObjetos> titulos;
-    private HashMap<String, List<ListaObjetos>> items;
+    private ArrayList<ListaItems> titulos;
+    private HashMap<String, List<ListaItems>> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,22 +71,22 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
 
     public void cargarDatos() {
         titulos = new ArrayList<>();
-        titulos.add(new ListaObjetos("Centro", R.drawable.colegio));
-        titulos.add(new ListaObjetos("Alumno", R.drawable.student));
-        titulos.add(new ListaObjetos("Profesor", R.drawable.teacher));
+        titulos.add(new ListaItems("Centro", R.drawable.colegio));
+        titulos.add(new ListaItems("Alumno", R.drawable.student));
+        titulos.add(new ListaItems("Profesor", R.drawable.teacher));
 
-        List<ListaObjetos> itemsCentro = new ArrayList<>();
-        itemsCentro.add(new ListaObjetos("Datos del Centro", R.drawable.information));
-        itemsCentro.add(new ListaObjetos("Localizacion del centro", R.drawable.location));
+        List<ListaItems> itemsCentro = new ArrayList<>();
+        itemsCentro.add(new ListaItems("Datos del Centro", R.drawable.information));
+        itemsCentro.add(new ListaItems("Localizacion del centro", R.drawable.location));
 
-        List<ListaObjetos> itemsAlumno = new ArrayList<>();
-        itemsAlumno.add(new ListaObjetos("Añadir Alumno", R.drawable.add_button));
-        itemsAlumno.add(new ListaObjetos("Matricular Alumno", R.drawable.matricula));
-        itemsAlumno.add(new ListaObjetos("Lista de alumnos", R.drawable.lista));
+        List<ListaItems> itemsAlumno = new ArrayList<>();
+        itemsAlumno.add(new ListaItems("Añadir Alumno", R.drawable.add_button));
+        itemsAlumno.add(new ListaItems("Matricular Alumno", R.drawable.matricula));
+        itemsAlumno.add(new ListaItems("Lista de alumnos", R.drawable.lista));
 
-        List<ListaObjetos> itemsProfesor = new ArrayList<>();
-        itemsProfesor.add(new ListaObjetos("Añadir Profesor", R.drawable.add_button));
-        itemsProfesor.add(new ListaObjetos("Lista de profesores", R.drawable.lista));
+        List<ListaItems> itemsProfesor = new ArrayList<>();
+        itemsProfesor.add(new ListaItems("Añadir Profesor", R.drawable.add_button));
+        itemsProfesor.add(new ListaItems("Lista de profesores", R.drawable.lista));
 
         items = new HashMap<>();
         items.put(titulos.get(0).getTitulo(), itemsCentro);

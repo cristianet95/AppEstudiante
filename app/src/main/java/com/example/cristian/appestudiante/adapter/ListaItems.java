@@ -4,16 +4,16 @@ package com.example.cristian.appestudiante.adapter;
  * Created by Cristian on 19/02/2017.
  */
 
-public class ListaObjetos {
+public class ListaItems {
 
 
     private String titulo;
     private int imagen;
 
-    public ListaObjetos() {
+    public ListaItems() {
     }
 
-    public ListaObjetos(String titulo, int imagen) {
+    public ListaItems(String titulo, int imagen) {
         this.titulo = titulo;
         this.imagen = imagen;
     }
