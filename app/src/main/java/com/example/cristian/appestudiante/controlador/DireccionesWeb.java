@@ -20,6 +20,7 @@ public class DireccionesWeb {
     public static final String URL_matricularAlumno = "http://appestudiante.esy.es/modelo/matricularAlumno.php";
     public static final String URL_actualizarAlumno = "http://appestudiante.esy.es/modelo/actualizarAlumno.php";
     public static final String URL_eliminarAlumno = "http://appestudiante.esy.es/modelo/eliminarAlumno.php";
+    public static final String URL_obtenerAlumnosPorId = "http://appestudiante.esy.es/modelo/obtenerAlumnosPorDni.php?dni=";
 
     //PROFESOR
     public static final String URL_anadirProfesor = "http://appestudiante.esy.es/modelo/anadirProfesor.php";

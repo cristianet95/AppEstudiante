@@ -36,10 +36,10 @@ public class AdaptadorCurso extends ArrayAdapter<Curso> {
 
         View item = inflater.inflate(R.layout.list_item_curso, null);
 
-        TextView txtId = (TextView) item.findViewById(R.id.txtIdCurso);
+        TextView txtPeriodo = (TextView) item.findViewById(R.id.txtPeriodo);
         TextView txtNombre = (TextView) item.findViewById(R.id.txtNombreCurso);
 
-        txtId.setText(cursos.get(position).getId());
+        txtPeriodo.setText(cursos.get(position).getPeriodo());
         txtNombre.setText(cursos.get(position).getNombre());
 
         return (item);

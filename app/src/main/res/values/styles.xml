@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="estiloEditToolbar">
+        <item name="android:background">@drawable/estilo_edit_toolbar</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorGris</item>
+    </style>
+
     <!-- Estilo Login -->
     <style name="ThemeOverlayActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/colorBlanco</item>

@@ -41,6 +41,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MatricularAlumno extends AppCompatActivity implements View.OnClickListener, OnAsyncFinish, AlumnoListener, CursoListener {
 
@@ -122,6 +123,7 @@ public class MatricularAlumno extends AppCompatActivity implements View.OnClickL
                 jsonObject.put("idCentro", idCentro);
                 jsonObject.put("idCurso", curso.getId());
                 jsonObject.put("dniAlumno", alumno.getDni());
+                jsonObject.put("fecha", Calendar.getInstance().getTime());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

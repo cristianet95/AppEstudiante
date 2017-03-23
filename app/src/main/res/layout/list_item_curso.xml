@@ -10,21 +10,20 @@
         android:layout_weight="1">
 
         <TextView
-            android:text="ID"
+            android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/textView28"
             android:layout_weight="1"
             android:padding="5dp"
+            android:text="Periodo"
             android:textAlignment="center" />
 
         <TextView
+            android:id="@+id/txtPeriodo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/txtIdCurso"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:gravity="center_vertical" />
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
