@@ -1,6 +1,8 @@
 package com.example.cristian.appestudiante.fragment;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +29,7 @@ import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.adapter.AdaptadorFragmentUsuarios;
 import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Alumno;
+import com.example.cristian.appestudiante.vista.DetallesAlumno;
 import com.example.cristian.appestudiante.vista.ListaAlumnos;
 
 import org.json.JSONArray;
@@ -38,6 +41,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -51,12 +55,13 @@ import java.util.ArrayList;
 
 public class FragmentListaAlumno extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
+    static final int ALUMNO_SELECCIONADO = 1;
+
     private ListView listaAlumnos;
     private Toolbar toolbar;
     private EditText editSearch;
     private TextView txtSearch;
     private ImageButton menuSearch;
-    private AlumnoListener listener;
     private int modoBusqueda = 0;
 
     @Nullable
@@ -75,7 +80,6 @@ public class FragmentListaAlumno extends Fragment implements AdapterView.OnItemC
         editSearch = (EditText) getView().findViewById(R.id.editSearch);
         txtSearch = (TextView) getView().findViewById(R.id.txtTituloSearch);
         menuSearch = (ImageButton) getView().findViewById(R.id.btnRadioSearch);
-
         txtSearch.setText("Lista Alumnos");
         editSearch.setHint("Buscar por dni");
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
@@ -100,14 +104,20 @@ public class FragmentListaAlumno extends Fragment implements AdapterView.OnItemC
                             search.execute(DireccionesWeb.URL_obtenerAlumnosPorId+editSearch.getText().toString());
                             break;
                         case 1:
+                            search.execute(DireccionesWeb.URL_obtenerAlumnosPorNombre+editSearch.getText().toString());
                             break;
                         case 2:
+                            search.execute(DireccionesWeb.URL_obtenerAlumnosPrimerApellido+editSearch.getText().toString());
                             break;
                         case 3:
+                            search.execute(DireccionesWeb.URL_obtenerAlumnoSegundoApellido+editSearch.getText().toString());
                             break;
                     }
             }
         });
+
+        AsyncAlumnos asyncAlumnos = new AsyncAlumnos();
+        asyncAlumnos.execute(DireccionesWeb.URL_obtenerAlumnos);
     }
 
     public void mostrarAlumnos(ArrayList<Alumno> alumnos){
@@ -115,14 +125,43 @@ public class FragmentListaAlumno extends Fragment implements AdapterView.OnItemC
         listaAlumnos.setOnItemClickListener(this);
     }
 
-    public void setListener(AlumnoListener listener){
-        this.listener = listener;
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        boolean existeFragment = (getActivity().getSupportFragmentManager().findFragmentById(R.id.frgDetalleAlumno)) != null;
+
+        if(existeFragment){
+
+        }else{
+            Intent intent = new Intent(getActivity(), DetallesAlumno.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("alumno", (Serializable) listaAlumnos.getAdapter().getItem(position));
+
+            intent.putExtras(bundle);
+            startActivityForResult(intent, ALUMNO_SELECCIONADO);
+        }
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if(listener != null){
-            listener.onAlumnoSeleccionado((Alumno) listaAlumnos.getAdapter().getItem(position));
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                AsyncAlumnos search = new AsyncAlumnos();
+                switch (modoBusqueda) {
+                    case 0:
+                        search.execute(DireccionesWeb.URL_obtenerAlumnosPorId+editSearch.getText().toString());
+                        break;
+                    case 1:
+                        search.execute(DireccionesWeb.URL_obtenerAlumnosPorNombre+editSearch.getText().toString());
+                        break;
+                    case 2:
+                        search.execute(DireccionesWeb.URL_obtenerAlumnosPrimerApellido+editSearch.getText().toString());
+                        break;
+                    case 3:
+                        search.execute(DireccionesWeb.URL_obtenerAlumnoSegundoApellido+editSearch.getText().toString());
+                        break;
+                }
+            }
         }
     }
 

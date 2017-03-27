@@ -7,7 +7,7 @@
     tools:context="com.example.cristian.appestudiante.vista.ListaProfesor"
     android:orientation="vertical">
 
-    <include android:id="@+id/toolbarlistaprofesor" layout="@layout/tool_bar"
+    <include android:id="@+id/toolbarlistaprofesor" layout="@layout/toolbar_lista"
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

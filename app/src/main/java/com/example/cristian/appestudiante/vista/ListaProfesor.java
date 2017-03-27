@@ -26,7 +26,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ListaProfesor extends AppCompatActivity implements ProfesorListener {
+public class ListaProfesor extends AppCompatActivity {
 
     private FragmentListaProfesor frgListaProfesor;
 
@@ -36,103 +36,5 @@ public class ListaProfesor extends AppCompatActivity implements ProfesorListener
         setContentView(R.layout.fragment_lista_profesores);
 
         frgListaProfesor = (FragmentListaProfesor) getSupportFragmentManager().findFragmentById(R.id.frgListaProfesores);
-
-        AsyncProfesores asyncProfesores = new AsyncProfesores();
-        asyncProfesores.execute(DireccionesWeb.URL_obtenerProfesores);
-
-        frgListaProfesor.setListener(this);
-    }
-
-    @Override
-    public void onProfesorListener(Profesor profesor) {
-            boolean existeFragment = (getSupportFragmentManager().findFragmentById(R.id.frgDetalleProfesor)) != null;
-
-        if(existeFragment){
-
-        }else{
-            Intent intent = new Intent(ListaProfesor.this, DetallesProfesor.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("profesor", profesor);
-            intent.putExtras(bundle);
-            startActivityForResult(intent, 1);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
-            if(resultCode == Activity.RESULT_OK){
-                AsyncProfesores asyncProfesores = new AsyncProfesores();
-                asyncProfesores.execute(DireccionesWeb.URL_obtenerProfesores);
-            }
-        }
-    }
-
-    class AsyncProfesores extends AsyncTask<String, Void, ArrayList<Profesor>> {
-
-        @Override
-        protected ArrayList<Profesor> doInBackground(String... params) {
-            String cadena = params[0];
-            URL url = null; // Url de donde queremos obtener información
-            String devuelve ="";
-            HttpURLConnection urlConn;
-            ArrayList<Profesor> listaProfesores= null;
-            Profesor profesor = null;
-
-            try {
-                url = new URL(cadena);
-
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0" + " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
-                int respuesta = connection.getResponseCode();
-
-
-                StringBuilder result = new StringBuilder();
-                if (respuesta == HttpURLConnection.HTTP_OK) {
-                    InputStream in = new BufferedInputStream(connection.getInputStream());
-
-                    // preparo la cadena de entrada
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in)); // la introduzco en un BufferedReader
-                    // StringBuilder.
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line); // Paso toda la entrada al StringBuilder
-                    }
-
-                    //Creamos un objeto JSONObject para poder acceder a los atributos(campos) del objeto.
-                    JSONObject respuestaJSON = new JSONObject(result.toString());
-
-                    JSONArray profesoresJSON = respuestaJSON.getJSONArray("profesores");
-                    listaProfesores = new ArrayList<>();
-                    for (int i = 0; i < profesoresJSON.length(); i++) {
-                        profesor = new Profesor();
-                        profesor.setDni(profesoresJSON.getJSONObject(i).getString("dni"));
-                        profesor.setNombre(profesoresJSON.getJSONObject(i).getString("nombre"));
-                        profesor.setApe1(profesoresJSON.getJSONObject(i).getString("ape1"));
-                        profesor.setApe2(profesoresJSON.getJSONObject(i).getString("ape2"));
-                        profesor.setEmail(profesoresJSON.getJSONObject(i).getString("email"));
-
-                        listaProfesores.add(profesor);
-                    }
-                    return listaProfesores;
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Profesor> profesores) {
-            if(profesores != null){
-                frgListaProfesor.mostrarProfesores(profesores);
-            }
-        }
     }
 }

@@ -85,8 +85,6 @@ public class FragmentDetallesAlumno extends Fragment {
 
 
     public void modificarAlumno() {
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("dni", editDni.getText().toString());
@@ -122,7 +120,7 @@ public class FragmentDetallesAlumno extends Fragment {
                         alumno.setTelefono(editTelefono.getText().toString());
                         alumno.setMovil(editMovil.getText().toString());
                         alumno.setEmail(editEmail.getText().toString());
-                        ((DetallesAlumno)getActivity()).setResult(Activity.RESULT_OK);
+                        getActivity().setResult(Activity.RESULT_OK);
                         cargarDatosAlumno(alumno);
                         cargarVista(2);
                     }else{

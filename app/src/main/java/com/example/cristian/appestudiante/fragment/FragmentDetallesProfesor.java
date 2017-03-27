@@ -98,7 +98,7 @@ public class FragmentDetallesProfesor extends Fragment {
                         profesor.setApe1(editApe1.getText().toString());
                         profesor.setApe2(editApe2.getText().toString());
                         profesor.setEmail(editEmail.getText().toString());
-                        ((DetallesProfesor)getActivity()).setResult(Activity.RESULT_OK);
+                        getActivity().setResult(Activity.RESULT_OK);
                         cargarDatosProfesor(profesor);
                         cargarVista(2);
                     }else{
