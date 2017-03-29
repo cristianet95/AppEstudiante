@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.adapter.AdaptadorProfesor;
@@ -117,7 +116,7 @@ public class FragmentListaProfesor extends Fragment implements AdapterView.OnIte
     }
 
     public void mostrarProfesores(ArrayList<Profesor> profesores){
-        listaProfesores.setAdapter(new AdaptadorProfesor(this, profesores));
+        listaProfesores.setAdapter(new AdaptadorProfesor(getActivity(), profesores));
         listaProfesores.setOnItemClickListener(this);
     }
 

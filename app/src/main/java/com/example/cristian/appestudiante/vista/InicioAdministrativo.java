@@ -80,13 +80,14 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
         itemsCentro.add(new ListaItems("Localizacion del centro", R.drawable.location));
 
         List<ListaItems> itemsAlumno = new ArrayList<>();
-        itemsAlumno.add(new ListaItems("Añadir Alumno", R.drawable.add_button));
-        itemsAlumno.add(new ListaItems("Matricular Alumno", R.drawable.matricula));
+        itemsAlumno.add(new ListaItems("Añadir alumno", R.drawable.add_button));
+        itemsAlumno.add(new ListaItems("Matricular alumno", R.drawable.matricula));
         itemsAlumno.add(new ListaItems("Lista de alumnos", R.drawable.lista));
 
         List<ListaItems> itemsProfesor = new ArrayList<>();
         itemsProfesor.add(new ListaItems("Añadir Profesor", R.drawable.add_button));
         itemsProfesor.add(new ListaItems("Lista de profesores", R.drawable.lista));
+        itemsProfesor.add(new ListaItems("Asignar materia", R.drawable.impartir));
 
         items = new HashMap<>();
         items.put(titulos.get(0).getTitulo(), itemsCentro);
@@ -136,6 +137,11 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
                 intent = new Intent(InicioAdministrativo.this, ListaProfesor.class);
                 startActivity(intent);
                 return true;
+            case R.id.opcionAsignar:
+                intent = new Intent(InicioAdministrativo.this, ImpartirActivity.class);
+                intent.putExtra("idCentro", ad.getIdCentro());
+                startActivity(intent);
+                return true;
             default:
                 return true;
         }
@@ -175,6 +181,10 @@ public class InicioAdministrativo extends AppCompatActivity implements Expandabl
                 intent = new Intent(InicioAdministrativo.this, ListaProfesor.class);
                 startActivity(intent);
                 return true;
+            }else if (childPosition == 2){
+                intent = new Intent(InicioAdministrativo.this, ImpartirActivity.class);
+                intent.putExtra("idCentro", ad.getIdCentro());
+                startActivity(intent);
             }
         }
         return true;

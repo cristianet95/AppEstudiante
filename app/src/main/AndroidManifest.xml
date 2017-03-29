@@ -33,7 +33,8 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".vista.MatricularAlumno" />
         <activity android:name=".vista.ListaProfesor" />
-        <activity android:name=".vista.DetallesProfesor"></activity>
+        <activity android:name=".vista.DetallesProfesor" />
+        <activity android:name=".vista.ImpartirActivity"></activity>
     </application>
 
 </manifest>

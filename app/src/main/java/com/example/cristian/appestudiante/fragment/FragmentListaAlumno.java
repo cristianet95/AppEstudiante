@@ -13,9 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,14 +20,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cristian.appestudiante.R;
-import com.example.cristian.appestudiante.adapter.AdaptadorFragmentUsuarios;
+import com.example.cristian.appestudiante.adapter.AdaptadorAlumno;
 import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.modelo.Alumno;
 import com.example.cristian.appestudiante.vista.DetallesAlumno;
-import com.example.cristian.appestudiante.vista.ListaAlumnos;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -121,7 +116,7 @@ public class FragmentListaAlumno extends Fragment implements AdapterView.OnItemC
     }
 
     public void mostrarAlumnos(ArrayList<Alumno> alumnos){
-        listaAlumnos.setAdapter(new AdaptadorFragmentUsuarios(this, alumnos));
+        listaAlumnos.setAdapter(new AdaptadorAlumno(getActivity(), alumnos));
         listaAlumnos.setOnItemClickListener(this);
     }
 

@@ -56,6 +56,11 @@
                     android:orderInCategory="100"
                     android:title="Listar Profesores"
                     android:icon="@drawable/lista"/>
+
+                <item android:id="@+id/opcionAsignar"
+                    android:orderInCategory="100"
+                    android:title="Asignar Materia"
+                    android:icon="@drawable/impartir"/>
             </group>
         </menu>
     </item>

@@ -22,18 +22,18 @@ import java.util.ArrayList;
 public class AdaptadorProfesor extends ArrayAdapter<Profesor> {
 
     private ArrayList<Profesor> profesores;
-    private Activity context;
+    private Context context;
 
-    public AdaptadorProfesor(Fragment context, ArrayList<Profesor> profesores) {
-        super(context.getActivity(), R.layout.dialogo_lista, profesores);
+    public AdaptadorProfesor(Context context, ArrayList<Profesor> profesores) {
+        super(context, R.layout.dialogo_lista, profesores);
         this.profesores = profesores;
-        this.context = context.getActivity();
+        this.context = context;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View item = inflater.inflate(R.layout.list_item_usuario, null);
 
