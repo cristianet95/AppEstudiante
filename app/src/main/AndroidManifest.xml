@@ -34,7 +34,8 @@
         <activity android:name=".vista.MatricularAlumno" />
         <activity android:name=".vista.ListaProfesor" />
         <activity android:name=".vista.DetallesProfesor" />
-        <activity android:name=".vista.ImpartirActivity"></activity>
+        <activity android:name=".vista.ImpartirActivity" />
+        <activity android:name=".vista.InicioProfesor"></activity>
     </application>
 
 </manifest>

@@ -15,18 +15,20 @@ public class Profesor implements Serializable {
     private String ape1;
     private String ape2;
     private String email;
+    private String password;
     private String idCentro;
 
 
     public Profesor() {
     }
 
-    public Profesor(String dni, String nombre, String ape1, String ape2, String email, String idCentro) {
+    public Profesor(String dni, String nombre, String ape1, String ape2, String email, String password, String idCentro) {
         this.dni = dni;
         this.nombre = nombre;
         this.ape1 = ape1;
         this.ape2 = ape2;
         this.email = email;
+        this.password = password;
         this.idCentro = idCentro;
     }
 
@@ -76,5 +78,13 @@ public class Profesor implements Serializable {
 
     public void setIdCentro(String idCentro) {
         this.idCentro = idCentro;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

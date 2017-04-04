@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Administrativo implements Serializable {
 
     private String dni;
+    private String nombre;
     private String ape1;
     private String ape2;
     private String idCentro;
@@ -16,8 +17,9 @@ public class Administrativo implements Serializable {
     public Administrativo() {
     }
 
-    public Administrativo(String dni, String ape1, String ape2, String idCentro) {
+    public Administrativo(String dni, String nombre, String ape1, String ape2, String idCentro) {
         this.dni = dni;
+        this.nombre = nombre;
         this.ape1 = ape1;
         this.ape2 = ape2;
         this.idCentro = idCentro;
@@ -29,6 +31,14 @@ public class Administrativo implements Serializable {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApe1() {

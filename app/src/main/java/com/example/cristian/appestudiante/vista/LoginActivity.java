@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.example.cristian.appestudiante.controlador.AppEstudianteSingleton;
 import com.example.cristian.appestudiante.controlador.DireccionesWeb;
 import com.example.cristian.appestudiante.dialog.DialogExisteUsuario;
 import com.example.cristian.appestudiante.modelo.Administrativo;
+import com.example.cristian.appestudiante.modelo.Profesor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.radioProfesor:
                 if(checked){
+                    ip = DireccionesWeb.URL_loginProfesor;
                 }
                 break;
             case R.id.radioAdministrativo:
@@ -104,14 +107,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }else if(response.getString("state").equals("2")){
                         Administrativo administrativo = new Administrativo();
                         administrativo.setDni(response.getJSONObject("administrativo").getString("dni"));
+                        administrativo.setNombre(response.getJSONObject("administrativo").getString("nombre"));
                         administrativo.setApe1(response.getJSONObject("administrativo").getString("ape1"));
                         administrativo.setApe2(response.getJSONObject("administrativo").getString("ape2"));
                         administrativo.setIdCentro(response.getJSONObject("administrativo").getString("idCentro"));
                         accesoInicioAdministrativo(administrativo);
-                    }else{
+                    }else if(response.getString("state").equals("3")) {
+                        Profesor profesor = new Profesor();
+                        profesor.setDni(response.getJSONObject("profesor").getString("dni"));
+                        profesor.setNombre(response.getJSONObject("profesor").getString("nombre"));
+                        profesor.setApe1(response.getJSONObject("profesor").getString("ape1"));
+                        profesor.setApe2(response.getJSONObject("profesor").getString("ape2"));
+                        profesor.setEmail(response.getJSONObject("profesor").getString("email"));
+                        profesor.setPassword(response.getJSONObject("profesor").getString("password"));
+                        profesor.setIdCentro(response.getJSONObject("profesor").getString("idCentro"));
+                        accesoInicioProfesor(profesor);
+                    } else{
                         DialogExisteUsuario deu = new DialogExisteUsuario();
                         deu.show(getSupportFragmentManager(), "notuser");
                     }
+
                 } catch (JSONException e) {
                     e.getMessage();
                 }
@@ -135,6 +150,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bundle.putSerializable("administrativo", ad);
         intent.putExtras(bundle);
 
+        startActivity(intent);
+    }
+
+    public void accesoInicioProfesor(Profesor profesor){
+        Intent intent = new Intent(LoginActivity.this, InicioProfesor.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("profesor", profesor);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
