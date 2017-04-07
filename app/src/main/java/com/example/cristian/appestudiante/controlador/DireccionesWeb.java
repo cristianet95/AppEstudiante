@@ -36,6 +36,7 @@ public class DireccionesWeb {
     public static final String URL_obtenerProfesoresPorNombre = "http://appestudiante.esy.es/modelo/obtenerProfesoresPorNombre.php?nombre=";
     public static final String URL_obtenerProfesoresPrimerApellido = "http://appestudiante.esy.es/modelo/obtenerProfesoresPrimerApellido.php?ape1=";
     public static final String URL_obtenerProfesoresSegundoApellido = "http://appestudiante.esy.es/modelo/obtenerProfesoresSegundoApellido.php?ape2=";
+    public static final String URL_obtenerAsignaturasByProfesor = "http://appestudiante.esy.es/modelo/getAsignaturaByProfesor.php?dni=";
 
     //ADMINISTRATIVO
     public static final String URL_asignarMateria = "http://appestudiante.esy.es/modelo/asignarMateria.php";

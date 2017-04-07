@@ -1,6 +1,7 @@
 package com.example.cristian.appestudiante.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.example.cristian.appestudiante.R;
 import com.example.cristian.appestudiante.modelo.Asignatura;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Cristian on 02/04/2017.
@@ -36,8 +38,12 @@ public class AdaptadorAsignatura extends ArrayAdapter<Asignatura>{
 
         View item = inflater.inflate(R.layout.list_item_asignatura, null);
 
+        TextView txtColor = (TextView) item.findViewById(R.id.txtColor);
         TextView txtAsignatura = (TextView) item.findViewById(R.id.txtAsignatura);
 
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        txtColor.setBackgroundColor(color);
         txtAsignatura.setText(asignaturas.get(position).getNombre());
 
         return (item);
